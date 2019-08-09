@@ -1,0 +1,75 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 class="card-header bg-info">
+    {{ title }}
+  </h1>
+  <h3 class="text-secondary">
+
+  </h3>
+  <div class="row ml-5">
+    <div class="col">
+      <div class="row">
+        <h4>
+          Accepted/Committed
+        </h4>
+      </div>
+      <div class="row">
+        <ngx-charts-bar-vertical [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
+          [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelForAccepted" (select)="onSelect($event)">
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <h4>
+          Vertical Bar Chart Normalized
+        </h4>
+      </div>
+      <div class="row">
+        <ngx-charts-bar-vertical-normalized [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view"
+          [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="yAxisLabelForScope" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+          (select)="onSelect($event)">
+        </ngx-charts-bar-vertical-normalized>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row ml-5">
+    <div class="col">
+      <div class="row">
+        <h4>
+          Scope Change
+        </h4>
+      </div>
+      <div class="row">
+        <ngx-charts-bar-vertical-stacked [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
+          [results]="scopeChangesValues" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelForScope"
+          (select)="onSelect($event)">
+        </ngx-charts-bar-vertical-stacked>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <h4>
+          Priority
+        </h4>
+      </div>
+      <div class="row">
+        <ngx-charts-bar-vertical-stacked [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
+          [results]="priorityDataValue" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+          (select)="onSelect($event)">
+        </ngx-charts-bar-vertical-stacked>
+      </div>
+    </div>
+  </div>
+  <app-line-chart></app-line-chart>
+</div>
+
+<router-outlet></router-outlet>
