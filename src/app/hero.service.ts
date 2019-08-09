@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HeroService {
- public urlPrefix ='http://192.168.136.22:8000';
+ public urlPrefix ='http://docker.ap-southeast-1.elasticbeanstalk.com';
   constructor(private httpClient:HttpClient) { }
 
   getSuccessData(){
-    return this.httpClient.get("http://localhost:8000/analysis/success-rate");
+    return this.httpClient.get("http://docker.ap-southeast-1.elasticbeanstalk.com/analysis/success-rate");
     }
     getUrlPrefix(){
       return this.urlPrefix; 
