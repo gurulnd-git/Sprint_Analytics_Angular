@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.httpClient.get('http://192.168.136.22:8000/analysis/success-rate').subscribe((resp) => {
+    this.sub = this.httpClient.get(this.heroService.getUrlPrefix()+'/analysis/success-rate').subscribe((resp) => {
       this.resp1 = resp;
       this.resp1.map((p) => {
         this.single1.push({ name: p.name, value: p.value });
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     });
 
 
-    this.sub1 = this.httpClient.get('http://192.168.136.22:8000/analysis/priority-mapping').subscribe((priorityData) => {
+    this.sub1 = this.httpClient.get(this.heroService.getUrlPrefix()+'/analysis/priority-mapping').subscribe((priorityData) => {
       this.priorityData1 = priorityData;
       this.priorityData1.map((priorityDataElemt) => {
         const obj = {
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
     });
 
 
-    this.sub1 = this.httpClient.get('http://192.168.136.22:8000/analysis/scope-change').subscribe((scopeChanges) => {
+    this.sub1 = this.httpClient.get(this.heroService.getUrlPrefix()+'/analysis/scope-change').subscribe((scopeChanges) => {
       this.scopeChanges1 = scopeChanges;
       this.scopeChanges1.map((scopeChangesElemt) => {
         const obj = {

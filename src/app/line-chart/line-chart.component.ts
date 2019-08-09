@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HeroService } from '../hero.service';
 
 @Component({
     selector: 'app-line-chart',
@@ -13,27 +14,54 @@ export class LineChartComponent implements OnInit {
     mocking:any = [];
     mocking1:any = [];
     labels:any = [];
-   
+    labelDatas: any=[];
+    committedStory:any =[];
+    valueSData:any =[];
+    constructor(private httpClient: HttpClient,private heroService : HeroService) {
+    }
 ngOnInit(){
-    this.sub6 = this.httpClient.get('http://192.168.136.22:8000/analysis/velocity-trend').subscribe((resp6) => {
-  
+    this.sub6 = this.httpClient.get(this.heroService.getUrlPrefix()+'/analysis/velocity-trend').subscribe((resp6) => {
+    this.resp5 = resp6;
+    this.resp5.map((p) => {
+        this.labelDatas.push(p.name);
+        this.committedStory.push(p.committedStory);
+        this.valueSData.push(p.value);
+      });
+
+      this.data = {
+        labels: this.labelDatas,
+        datasets: [
+            {
+                label: 'Velocity',
+                data: this.committedStory,
+                fill: false,
+                borderColor: '#565656'
+            },
+            {
+                label: 'Velocity Predictability',
+                data: this.valueSData,
+                fill: false,
+                borderColor: '#4bc0c0'
+            }
+        ]
+    }
     });
 }
 
 
-    constructor(private httpClient: HttpClient) {
-        this.data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    borderColor: '#565656'
-                }
-            ]
-        }
-    }
+    // constructor(private httpClient: HttpClient) {
+    //     this.data = {
+    //         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //         datasets: [
+    //             {
+    //                 label: 'Second Dataset',
+    //                 data: [28, 48, 40, 19, 86, 27, 90],
+    //                 fill: false,
+    //                 borderColor: '#565656'
+    //             }
+    //         ]
+    //     }
+    // }
 
     
 
