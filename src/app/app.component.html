@@ -1,12 +1,46 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
+
 <div style="text-align:center">
-  <h1 class="card-header bg-info">
-    {{ title }}
-  </h1>
+  <div *ngIf="!loginPageVisible" class="card-header bg-info">
+    <div style="height: 92px;" *ngIf="!loginPageVisible" class="form">
+      <div class="login-form">
+        <h1 style="    position: relative;
+        bottom: 24px;"> {{ title }}</h1>
+        <button style="width: 10%;
+          float: right;
+          bottom: 77px;
+          position: relative;
+           border: 1px solid;
+          padding: 10px;
+          box-shadow: 5px 10px;" (click)="logout()">LOGOUT</button>
+      </div>
+    </div>
+  </div>
+
   <h3 class="text-secondary">
 
   </h3>
-  <div class="row ml-5">
+  <div class="login-page" style="position: relative;
+  bottom: 26px;" *ngIf="loginPageVisible">
+    <div class="form">
+      <h3 style="color: #777070"><B>SPRINT ANALYSIS </B> </h3>
+      <div class="login-form">
+        <input type="text" [(ngModel)]="username" placeholder="username" />
+        <input type="password" [(ngModel)]="password" placeholder="password" />
+        <button (click)="loginSuccess()">LogIn</button>
+        <p *ngIf="error" style="color: red" class="message">
+          <a style="color: red;font-size: 25px;font-style: oblique"> ! Login invalid</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="loginPageVisible">
+HELLOO
+<button (click)="loginSuccess()"></button>
+  </div> -->
+  <div class="row ml-5" style="top: 18px;position: relative;" *ngIf="!loginPageVisible">
     <div class="col">
       <div class="row">
         <h4>
@@ -23,46 +57,51 @@
     <div class="col">
       <div class="row">
         <h4>
-          Velocity-Predictability
-        </h4>
-      </div>
-      <div class="row">
-        <app-line-chart  [ngStyle]="{ 'width': '80%', 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}"></app-line-chart>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <div class="row ml-5">
-    <div class="col">
-      <div class="row">
-        <h4>
-          Scope Change
-        </h4>
-      </div>
-      <div class="row">
-        <ngx-charts-bar-vertical-stacked [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
-          [results]="scopeChangesValues" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelForScope"
-          >
-        </ngx-charts-bar-vertical-stacked>
-      </div>
-    </div>
-    <div class="col">
-      <div class="row">
-        <h4>
           Priority
         </h4>
       </div>
       <div class="row">
         <ngx-charts-bar-vertical-stacked [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
           [results]="priorityDataValue" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
-          >
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
         </ngx-charts-bar-vertical-stacked>
       </div>
+
+
+    </div>
+  </div>
+
+
+
+
+  <div class="row ml-5" style="top: 36px;position: relative;" *ngIf="!loginPageVisible">
+    <div class="col">
+      <div class="row">
+        <h4>
+          Scope Change
+        </h4>
+      </div>
+      <div class="row" style="width: 79%">
+        <ngx-charts-bar-vertical-stacked [ngStyle]="{ 'box-shadow': 'rgb(219, 203, 215) 0px 0px 0px 3px inset'}" [view]="view" [scheme]="colorScheme"
+          [results]="scopeChangesValues" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelForScope">
+        </ngx-charts-bar-vertical-stacked>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <h4>
+          Velocity Predictability
+        </h4>
+      </div>
+      <div class="row">
+        <div class="testClassForLine">
+          <app-line-chart></app-line-chart>
+        </div>
+
+      </div>
+    </div>
+    <div>
     </div>
   </div>
 </div>

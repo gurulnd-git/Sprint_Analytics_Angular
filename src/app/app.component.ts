@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forEach } from '@angular/router/src/utils/collection';
 import { HeroService } from './hero.service';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +24,11 @@ export class AppComponent implements OnInit {
   scopeChanges1: any;
   scopeChangesDup: any = [];
   scopeChangesValues: any = [];
-
-
+  loginPageVisible: boolean = true;
+  username:string;
+  password:string;
+  error:boolean=false;
+  
   constructor(private httpClient: HttpClient, private heroService : HeroService) {
    
   }
@@ -76,7 +81,18 @@ export class AppComponent implements OnInit {
     });
 
   }
- 
+
+  loginSuccess(){
+    if(this.username ==="admin" && this.password==="admin"){
+    this.loginPageVisible = false;
+    }
+    this.error=true;
+    
+  }
+   logout(){
+     this.loginPageVisible=true
+     this.error=false;
+   }
   public multi = [
     {
       "name": "China",

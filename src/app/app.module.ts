@@ -8,11 +8,19 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import {ChartModule} from 'primeng/chart';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent,
+     LineChartComponent,
+     LoginComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -20,7 +28,8 @@ import {ChartModule} from 'primeng/chart';
     NgxChartsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ChartModule
+    ChartModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
