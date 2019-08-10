@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-        S3_BUCKET: "cloudfrontservice"
+        S3_BUCKET: "front-end-service"
         BUILD_ENV: "prod"
         CLOUDFRONT_ID: "E1HCAN3QWMC3LP"
 phases:
