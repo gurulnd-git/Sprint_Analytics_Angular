@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HeroService {
- public urlPrefix ='http://192.168.136.22:8080';
+ public urlPrefix ='http://sprint-production-env.ap-southeast-1.elasticbeanstalk.com';
  public loginPageVisible:boolean = true;
   constructor(private httpClient:HttpClient) { }
 
   getSuccessData(){
-    return this.httpClient.get("http://localhost:8000/analysis/success-rate");
+    return this.httpClient.get("http://sprint-production-env.ap-southeast-1.elasticbeanstalk.com/analysis/success-rate");
     }
     getUrlPrefix(){
       return this.urlPrefix; 
